@@ -5,8 +5,7 @@
 <h5 align="center">@amenocal</h3>
 
 <p align="center">
-  <a href="#mega-prerequisites">Prerrequisitos</a> •  
-  <a href="#books-resources">Recursos</a>
+  <a href="#mega-pre-requisitos">Prerrequisitos</a> •
 </p>
 
 > Este taller es una sesión práctica para ayudarte a limpiar tu monorepositorio. Usaremos herramientas populares de código abierto para descubrir y ayudar en la eliminación de archivos binarios grandes. También aprenderemos métodos para disminuir el tamaño de nuestro repositorio, pero aún preservando el historial de git usando `git replace` para unir dos repositorios juntos.
