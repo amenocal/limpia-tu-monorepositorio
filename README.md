@@ -1,3 +1,5 @@
+# Limpieza profunda de tu Monorepositorio
+
 <p align="center">
   <img width="150" height="150" src="https://ghicons.github.com/assets/images/blue/png/Daily%20experience.png" />
 </p>
@@ -69,6 +71,6 @@ cp -r monorepositorio monorepositorio-filter-repo
 
 ## :chains: Activity 3: Grafting 
 
-### Git replace
+### Como hacer un graft de dos repositorios
 
-### Grafting a repository
+[Grafting](./actividades/grafting-repositorio.md)
