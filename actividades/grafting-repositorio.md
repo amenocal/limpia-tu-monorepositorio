@@ -31,6 +31,16 @@ Como podemos hacer este proces con nuestro monorepositorio? Ya que no queremos r
        commit id: "4a8609"
 ```
 
+```mermaid
+    %%{init: { 'theme': 'base', 'gitGraph': { 'mainBranchName' : "monorepo"}} }%%
+    gitGraph
+       commit id: "4a8609"
+       commit id: "b4cf33"
+       commit id: "ee3176"
+       commit id: "73f627"
+       commit id: "332add"
+```
+
 ## Proceso
 
 Nuestro primer paso es copiar nuestro monorepositorio en un nuevo directorio. Usaremos uno como el repositorio historico y el otro como el repositorio futuro.
@@ -67,11 +77,11 @@ Una vez completado, ahora tenemos dos repositorios diferentes, uno con solo 1 co
 ```mermaid
     %%{init: { 'theme': 'base', 'gitGraph': { 'mainBranchName' : "historial monorepo"}} }%%
     gitGraph
-       commit id: "332add"
-       commit id: "73f627"
-       commit id: "ee3176"
-       commit id: "b4cf33"
        commit id: "4a8609"
+       commit id: "b4cf33"
+       commit id: "ee3176"
+       commit id: "73f627"
+       commit id: "332add"
 ```
 
 
@@ -116,6 +126,20 @@ Finalmente, podemos hacer graft el FETCH_HEAD a el HEAD de nuestro monorepositor
        commit id: "ee3176"
        commit id: "b4cf33"
        commit id: "4a8609"
+```
+
+
+```mermaid
+    %%{init: { 'theme': 'base', 'gitGraph': { 'mainBranchName' : " monorepo"}} }%%
+    gitGraph
+       commit id: "4a8609"
+       commit id: "b4cf33"
+       commit id: "ee3176"
+       commit id: "73f627"
+       commit id: "332add"
+       branch historial-monorepositorio
+       commit id: "nuevo commit"
+       
        
 ```
 
@@ -140,14 +164,24 @@ El repositrio ahora deberia de aparecer como un solo repositorio con todo el his
 
 ```mermaid
     %%{init: { 'theme': 'base', 'gitGraph': { 'mainBranchName' : " monorepo"}} }%%
-    gitGraph
+    gitGraph LR:
        commit id: "nuevo commit" type: HIGHLIGHT
        commit id: "332add"
        commit id: "73f627"
        commit id: "ee3176"
        commit id: "b4cf33"
        commit id: "4a8609"
-       
+```
+
+```mermaid
+    %%{init: { 'theme': 'base', 'gitGraph': { 'mainBranchName' : " monorepo"}} }%%
+    gitGraph LR:
+       commit id: "4a8609"
+       commit id: "b4cf33"
+       commit id: "ee3176"
+       commit id: "73f627"
+       commit id: "332add"
+       commit id: "nuevo commit" type: HIGHLIGHT
 ```
 
 ![Final Repository](../images/final_transparent.png "Final Repository")
