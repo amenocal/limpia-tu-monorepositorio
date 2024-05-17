@@ -21,6 +21,16 @@ Como podemos hacer este proces con nuestro monorepositorio? Ya que no queremos r
 
 ![Main Repository](../images/main_transparent.png "Main Repository")
 
+```mermaid
+    %%{init: { 'theme': 'base', 'gitGraph': { 'mainBranchName' : "monorepo"}} }%%
+    gitGraph
+       commit id: "332add"
+       commit id: "73f627"
+       commit id: "ee3176"
+       commit id: "b4cf33"
+       commit id: "4a8609"
+```
+
 ## Proceso
 
 Nuestro primer paso es copiar nuestro monorepositorio en un nuevo directorio. Usaremos uno como el repositorio historico y el otro como el repositorio futuro.
@@ -47,6 +57,23 @@ git commit -m "Primer commit de el monorepositorio. Puedes encontrar todo el his
 Una vez completado, ahora tenemos dos repositorios diferentes, uno con solo 1 commit y otro con la replica del monorepositorio con todo el historial.
 
 ![Separated Repository](../images/separated_transparent.png "Main Repository")
+
+```mermaid
+    %%{init: { 'theme': 'base', 'gitGraph': { 'mainBranchName' : "monorepo"}} }%%
+    gitGraph
+       commit id: "HEAD {{nuevo commit}}"
+```
+
+```mermaid
+    %%{init: { 'theme': 'base', 'gitGraph': { 'mainBranchName' : "historial monorepo"}} }%%
+    gitGraph
+       commit id: "332add"
+       commit id: "73f627"
+       commit id: "ee3176"
+       commit id: "b4cf33"
+       commit id: "4a8609"
+```
+
 
 Ahora que ya tenemos un nuevo repositorio, podemos agregar nuestro repositorio historico como un remoto y traer el historial de el:
 
@@ -79,6 +106,20 @@ git ls-tree --name-only -r FETCH_HEAD
 
 Finalmente, podemos hacer graft el FETCH_HEAD a el HEAD de nuestro monorepositorio.
 
+```mermaid
+    %%{init: { 'theme': 'base', 'gitGraph': { 'mainBranchName' : " monorepo"}} }%%
+    gitGraph
+       commit id: "nuevo commit"
+       branch historial-monorepositorio
+       commit id: "332add"
+       commit id: "73f627"
+       commit id: "ee3176"
+       commit id: "b4cf33"
+       commit id: "4a8609"
+       
+```
+
+
 ![Main Repository](../images/grafted_transparent.png "Main Repository")
 
 Esto lo podemos hacer con `git replace` con el siguiente comando:
@@ -95,6 +136,19 @@ git replace --graft <nuevo-commit> FETCH_HEAD
 ```
 
 El repositrio ahora deberia de aparecer como un solo repositorio con todo el historial del monorepositorio.
+
+
+```mermaid
+    %%{init: { 'theme': 'base', 'gitGraph': { 'mainBranchName' : " monorepo"}} }%%
+    gitGraph
+       commit id: "nuevo commit" type: HIGHLIGHT
+       commit id: "332add"
+       commit id: "73f627"
+       commit id: "ee3176"
+       commit id: "b4cf33"
+       commit id: "4a8609"
+       
+```
 
 ![Final Repository](../images/final_transparent.png "Final Repository")
 
