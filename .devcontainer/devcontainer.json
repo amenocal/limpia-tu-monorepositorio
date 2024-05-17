@@ -1,0 +1,23 @@
+ {
+    "name": "limpia-tu-monorepositorio",
+    "onCreateCommand": ".devcontainer/on-create-command.sh",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "github.copilot",
+          "dbaeumer.vscode-eslint",
+          "eamodio.gitlens"
+        ],
+        "settings": {
+          "terminal.integrated.shell.linux": "/bin/bash",
+          "extensions.verifySignatures": false
+      }
+    }
+    },
+    "features": {
+    }
+ }
