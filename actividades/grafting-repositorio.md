@@ -79,7 +79,6 @@ git ls-tree --name-only -r HEAD
 git ls-tree --name-only -r FETCH_HEAD
 ```
 
-
 Finalmente, podemos hacer graft el FETCH_HEAD a el HEAD de nuestro monorepositorio.
 
 ![Main Repository](../images/grafted_transparent.png "Main Repository")
@@ -102,8 +101,6 @@ git replace --graft <nuevo-commit> FETCH_HEAD
 El repositrio ahora deberia de aparecer como un solo repositorio con todo el historial del monorepositorio.
 
 ![Final Repository](../images/final_transparent.png "Final Repository")
-
-Running `git log` should now correctly output the latest commit along with the entire history of the monorepo. You should also be able to see the exact commit where the repositories were grafted together.
 
 All correr `git log` deberia de mostrar correctamente el ultimo commit junto con todo el historial del monorepositorio. Tambien deberias de poder ver el commit exacto donde el graft fue hecho en el repositorio.
 
@@ -135,7 +132,6 @@ git log --oneline | head -n 10
 ```
 
 ## Conclusion
-
 
 Como se menciono, grafting de un repositorio con `git replace` es una tecnica util para preservar el historial de un monorepositorio mientras se mantiene el desarrollo futuro. La mayoria de las veces, los sitemas de control de versiones proveeran una manera de archivar o establecer el estado del repositorio como "read only". Grafting permite a los usuarios integrar sin problemas el historial archivado en un nuevo repositorio. Y con esto, hemos exitosamente hecho grating en nuestros repositorios y concluido la ultima actividad! 🎉 🎉
 

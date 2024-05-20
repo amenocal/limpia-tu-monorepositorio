@@ -2,7 +2,6 @@
 
 Para la primera actividad, usaremos `git-sizer` para analizar el estado de tu monorepositorio. `git-sizer` es una herramienta que te ayudará a comprender el tamaño de su repositorio e identificar archivos y commits grandes.
 
-Before we begin, let's take a look at the contents of our current monorepo.
 Antes de comenzar, echemos un vistazo al contenido de nuestro monorepositorio actual.
 
 ```bash
@@ -117,7 +116,7 @@ Que tipo de informacion podemos obtener de esta tabla?
 |   * Count                    |     8     |                                |
 |   * Total size               |  5.34 KiB |                                |
 ```
-Commit count is synonymous with  `git log --oneline | wc -l`. 
+
 El numero de commits es sinónimo de `git log --oneline | wc -l`.
 
 Este es el numero total de commits en un repositorio. El tamaño total es el tamaño total de todos los commits en el repositorio. Esto no incluye el tamaño de los blobs o los "trees", los cuales son calculados en una sección diferente.
@@ -189,7 +188,6 @@ F�Y�R�I�}�d��s!U�Ts�R�Qt-"�"T�ս!���0�@���
 
 </details>
 
-From the output, we can clearly tell that the object is a binary file... Let's use the commit SHA and `git ls-tree` to see what repository contains:
 Por el output, podemos ver claramente que el objeto es un archivo binario... Usemos el SHA del commit y `git ls-tree` para ver que contiene el repositorio:
 
 ```bash
