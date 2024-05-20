@@ -6,13 +6,13 @@ En nuestro ejemplo, usamos `git-sizer` y `git filter-repo` para determinar que n
 Para este ejercicio, vamos a limpiar nuestro repositorio y eliminaremos todas las instancias del archivo `backup/data.bak` del historial del repositorio. 
 `git filter-repo` nos permite mandarle una sola ruta o una lista de rutas a todas las instancias del archivo del historial del repositorio.
 
-
 Primero, naveguemos a una copia fresca de nuestro repositorio y ejecutemos el siguiente comando:
 
 ```bash
 cd /source/monorepositorio-filter-repo
 git filter-repo --path backup/data.bak --invert-paths
 ```
+
 > [!CAUTION]
 > Asegúrate de que la bandera `--invert-paths` esté incluida en tu comando, de lo contrario, eliminarás todas las instancias de todos los archivos **excepto** el archivo `backup/data.bak`.
 
@@ -45,17 +45,18 @@ Tambien podemos corre `git log --oneline | wc -l` para obtener el conteo de comm
 ```bash
 git log --oneline | wc -l
 ```
+
 <details><summary>Output</summary>
 
 ```bash
 7
 ```
+
 </details>
 
 Aqui podemos notar que el número de commits ha sido reducido de 8 a 7. Cualquier commit donde el archivo era el único objeto que se agregaba/modificaba ha sido eliminado del historial.
 
 Finalmente, veamos el output de `git-sizer` para ver si algo ha cambiado:
-
 
 ```bash
 git-sizer --verbose
@@ -124,7 +125,7 @@ Despues de realizar una reescritura, `git filter-repo` tambien producira una lis
 
 Estos contenidos se encuentran en el archivo `.git/filter-repo/commit-map` en el directorio de trabajo del repositorio. El contenido de este archivo se ve algo como esto:
 
-```
+```bash
 old                                      new
 332addd7607c12bcb0d0f955970533a41a321e90 0000000000000000000000000000000000000000
 f9a40dc6c3d492dacfea5ac574ad3909eebd2661 63b335be9ea5c29ec492ba0da0a0dbdc7819b50b
@@ -141,10 +142,7 @@ En los casos donde se vean todos 0's, esto significa que el commit fue eliminado
 > [!CAUTION]
 > Es importante notar que ejecuciones subsecuentes de `git filter-repo` reescribiran la historia multiples veces, y por lo tanto los shas y estos archivos cambiaran nuevamente. Es importante combinar tus parametros en un solo comando para solo tener que ejecutar `git filter-repo` y reescribir la historia una vez.
 
-
 ## Conclusion
-
-In this lesson, we learned how to use `git filter-repo` to remove large files from our repository history. In particular, we learned how to remove all instances of a single large blob from the commit history, and to verify that it has been successfully removed. 
 
 En esta actividad, aprendimos como utilizar `git filter-repo` para remover archivos grandes de nuestro historial de repositorio. En particular, aprendimos como remover todas las instancias de un solo blob grande del historial de commits, y verificar que ha sido removido exitosamente.
 

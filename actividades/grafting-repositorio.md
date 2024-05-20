@@ -58,8 +58,6 @@ git remote add historial ../mal-monorepositorio-historial
 git fetch historial
 ```
 
-At this point, you should still only have one commit in your repository. We can verify this by running `git log`:
-
 A este punto, todavia deberiamos de tener solo un commit en nuestro repositorio. Podemos verificar esto ejecutando `git log`:
 
 ```bash
@@ -88,8 +86,6 @@ Esto lo podemos hacer con `git replace` con el siguiente comando:
 ```bash
 git replace --graft HEAD FETCH_HEAD
 ```
-
-In our example, the HEAD commit is our first commit in the historical repository, but going forward, developers will want to replace HEAD with the SHA of the first commit in the new repository. 
 
 > [!NOTE]
 > En nuestro ejemplo, usamos HEAD como el primer commit en el repositorio historico, pero como alternativa tambien pueden reemplazar HEAD con el SHA del primer commit en el nuevo repositorio.

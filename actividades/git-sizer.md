@@ -46,7 +46,6 @@ Por los momemntos, todo parece bien, pero veamos si `git-sizer` nos puede dar un
 git sizer --verbose
 ```
 
-You should see an output similar to the following:
 Deberias de ver un output similar al siguiente:
 
 <details><summary>Output</summary>
@@ -131,6 +130,7 @@ Este es el numero total de commits en un repositorio. El tamaño total es el tam
 | * Blobs                      |           |                                |
 |   * Maximum size         [3] |  50.0 MiB | *****                          |
 ```
+
 El tamaño máximo de blob(Maximum Blob size) indica el archivo más grande que existe en cualquier commit en la historia de un repositorio.
 
 ```bash

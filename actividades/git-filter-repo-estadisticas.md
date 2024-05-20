@@ -2,7 +2,6 @@
 
 Para la segunda actividad, usaremos `git filter-repo` para determinar y analizar blobs grandes en un repositorio.
 
-While the main purpose of `git filter-repo` is to rewrite history, it can also be used to gather information about blobs in your repository.
 Aunque el propósito principal de `git filter-repo` es reescribir la historia de un repositorio, también se puede usar para recopilar información sobre blobs en tu repositorio. 
 
 Navega al directorio del monorepositorio y ejecuta el siguiente comando:
@@ -19,7 +18,6 @@ cd .git/filter-repo/analysis
 ```
 
 En este directorio encontrarás varios archivos, pero por ahora nos interesa el archivo `blobs-shas-and-path.txt`.
-
 
 Abre el archivo:
 
@@ -84,13 +82,9 @@ cmd/root.go
 ```
 </details>
 
-You will notice that in some cases, a filename is listed multiple times. This indicates that changes to the file have been commited multiple times in the history of the repository. For large files (in particular large, compressed binary files), this can be problematic as large binaries do not tend to compress nor diff well.
-
 En algunos casos notaras que el archivo se repite varias veces. Esto indica que los cambios en el archivo ha pasado por commits varias veces en la historia del repositorio. Para archivos grandes (en particular archivos binarios grandes y comprimidos), esto puede ser problemático ya que los binarios grandes no tienden a comprimirse ni a diferenciarse bien.
 
 ## Conclusion
-
-In this lesson, we learned how to use `git filter-repo` to gather information about blobs in a repository. In particular, we learned how to use `git filter-repo` to find the largest blob, find the commit that it was introduced, and determine what other files were introduced in the same commit.
 
 En esta actividad, aprendimos cómo usar `git filter-repo` para recopilar información sobre blobs en un repositorio. En particular, aprendimos cómo usar `git filter-repo` para encontrar el blob más grande, encontrar el commit en el que se introdujo y determinar qué otros archivos se introdujeron en el mismo commit.
 
