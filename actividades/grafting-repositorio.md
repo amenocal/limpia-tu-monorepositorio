@@ -19,7 +19,20 @@ Podemos usar `--convert-graft-file` para convertir un archivo `$GIT_DIR/info/gra
 
 Como podemos hacer este proces con nuestro monorepositorio? Ya que no queremos reescribir la historia, podemos crear dos copias del repositorio, una conteniendo toda el historial y la otra con el `HEAD` del repositorio historico y cualquier otro commit futuro. Con este enfoque, el repositorio historico permanecera intacto (solo lectura) y el nuevo repositorio sera usado para todo desarrollo futuro.
 
-![Main Repository](../images/main_transparent.png "Main Repository")
+```mermaid
+    %%{init: { 'theme': 'base', 'gitGraph': { 'mainBranchName' : "monorepo"}} }%%
+    gitGraph
+       commit id: "4a8609"
+       commit id: "b4cf33"
+       commit id: "ee3176"
+       commit id: "73f627"
+       commit id: "332add"
+```
+
+<details><summary> Backup (imagen)</summary>
+
+![monorepositorio](../images/monorepositorio.png)
+</details>
 
 ## Proceso
 
@@ -46,7 +59,26 @@ git commit -m "Primer commit de el monorepositorio. Puedes encontrar todo el his
 
 Una vez completado, ahora tenemos dos repositorios diferentes, uno con solo 1 commit y otro con la replica del monorepositorio con todo el historial.
 
-![Separated Repository](../images/separated_transparent.png "Main Repository")
+```mermaid
+    %%{init: { 'theme': 'base', 'gitGraph': { 'mainBranchName' : "monorepo"}} }%%
+    gitGraph
+       commit id: "HEAD {{nuevo commit}}"
+```
+
+```mermaid
+    %%{init: { 'theme': 'base', 'gitGraph': { 'mainBranchName' : "historial monorepo"}} }%%
+    gitGraph
+       commit id: "4a8609"
+       commit id: "b4cf33"
+       commit id: "ee3176"
+       commit id: "73f627"
+       commit id: "332add"
+```
+
+<details><summary> Backup (imagen)</summary>
+
+![monorepositorio un commit](../images/monorepo-un-commit.png)
+</details>
 
 Ahora que ya tenemos un nuevo repositorio, podemos agregar nuestro repositorio historico como un remoto y traer el historial de el:
 
@@ -79,7 +111,22 @@ git ls-tree --name-only -r FETCH_HEAD
 
 Finalmente, podemos hacer graft el FETCH_HEAD a el HEAD de nuestro monorepositorio.
 
-![Main Repository](../images/grafted_transparent.png "Main Repository")
+```mermaid
+    %%{init: { 'theme': 'base', 'gitGraph': { 'mainBranchName' : "historial monorepo"}} }%%
+    gitGraph
+       commit id: "4a8609"
+       commit id: "b4cf33"
+       commit id: "ee3176"
+       commit id: "73f627"
+       commit id: "332add"
+       branch nuevo-monorepositorio
+       commit id: "nuevo commit"
+```
+
+<details><summary> Backup (imagen)</summary>
+
+![monorepositorio e historial](../images/monorepo-e-historial.png)
+</details>
 
 Esto lo podemos hacer con `git replace` con el siguiente comando:
 
@@ -96,7 +143,21 @@ git replace --graft <nuevo-commit> FETCH_HEAD
 
 El repositrio ahora deberia de aparecer como un solo repositorio con todo el historial del monorepositorio.
 
-![Final Repository](../images/final_transparent.png "Final Repository")
+```mermaid
+    %%{init: { 'theme': 'base', 'gitGraph': { 'mainBranchName' : " monorepo"}} }%%
+    gitGraph LR:
+       commit id: "4a8609"
+       commit id: "b4cf33"
+       commit id: "ee3176"
+       commit id: "73f627"
+       commit id: "332add"
+       commit id: "nuevo commit" type: HIGHLIGHT
+```
+
+<details><summary> Backup (imagen)</summary>
+
+![monorepositorio e historial](../images/nuevo-monorepo.png)
+</details>
 
 All correr `git log` deberia de mostrar correctamente el ultimo commit junto con todo el historial del monorepositorio. Tambien deberias de poder ver el commit exacto donde el graft fue hecho en el repositorio.
 
