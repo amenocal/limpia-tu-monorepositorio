@@ -29,6 +29,11 @@ Como podemos hacer este proces con nuestro monorepositorio? Ya que no queremos r
        commit id: "332add"
 ```
 
+<details><summary> Backup (imagen)</summary>
+
+![monorepositorio](../images/monorepositorio.png)
+</details>
+
 ## Proceso
 
 Nuestro primer paso es copiar nuestro monorepositorio en un nuevo directorio. Usaremos uno como el repositorio historico y el otro como el repositorio futuro.
@@ -70,6 +75,10 @@ Una vez completado, ahora tenemos dos repositorios diferentes, uno con solo 1 co
        commit id: "332add"
 ```
 
+<details><summary> Backup (imagen)</summary>
+
+![monorepositorio un commit](../images/monorepo-un-commit.png)
+</details>
 
 Ahora que ya tenemos un nuevo repositorio, podemos agregar nuestro repositorio historico como un remoto y traer el historial de el:
 
@@ -114,6 +123,11 @@ Finalmente, podemos hacer graft el FETCH_HEAD a el HEAD de nuestro monorepositor
        commit id: "nuevo commit"
 ```
 
+<details><summary> Backup (imagen)</summary>
+
+![monorepositorio e historial](../images/monorepo-e-historial.png)
+</details>
+
 Esto lo podemos hacer con `git replace` con el siguiente comando:
 
 ```bash
@@ -139,6 +153,11 @@ El repositrio ahora deberia de aparecer como un solo repositorio con todo el his
        commit id: "332add"
        commit id: "nuevo commit" type: HIGHLIGHT
 ```
+
+<details><summary> Backup (imagen)</summary>
+
+![monorepositorio e historial](../images/nuevo-monorepo.png)
+</details>
 
 All correr `git log` deberia de mostrar correctamente el ultimo commit junto con todo el historial del monorepositorio. Tambien deberias de poder ver el commit exacto donde el graft fue hecho en el repositorio.
 
