@@ -1,9 +1,9 @@
 # Reescribiendo la historia con `git filter-repo`
 
-Ahora que ya hemos recopilado información sobre nuestros archivos grandes, veamos cómo podemos reescribir la historia para eliminarlos. Usaremos la herramienta `git filter-repo` para esto.
+Ahora que ya hemos recopilado información sobre nuestros archivos grandes, veamos cómo podemos reescribir la historia para eliminarlos. Usaremos la herramienta `git filter-repo`.
 
 En nuestro ejemplo, usamos `git-sizer` y `git filter-repo` para determinar que nuestro repositorio contenía un archivo de respaldo de base de datos(un archivo binario) que accidentalmente fue agregado al repositorio.
-Para este ejercicio, vamos a limpiar nuestro repositorio y eliminaremos todas las instancias del archivo `backup/data.bak` del historial del repositorio. 
+Para este ejercicio, vamos a limpiar nuestro repositorio y eliminaremos todas las instancias del archivo `backup/data.bak` del historial del repositorio.
 `git filter-repo` nos permite mandarle una sola ruta o una lista de rutas a todas las instancias del archivo del historial del repositorio.
 
 Primero, naveguemos a una copia fresca de nuestro repositorio y ejecutemos el siguiente comando:
@@ -16,7 +16,7 @@ git filter-repo --path backup/data.bak --invert-paths
 > [!CAUTION]
 > Asegúrate de que la bandera `--invert-paths` esté incluida en tu comando, de lo contrario, eliminarás todas las instancias de todos los archivos **excepto** el archivo `backup/data.bak`.
 
-El output debería ser algo similar a lo siguente:
+El output debería ser algo similar a lo siguiente:
 
 ```bash
 Parsed 8 commits
@@ -40,7 +40,7 @@ git --no-pager log --follow  --diff-filter=A -- backup/data.bak
 
 El cual no debería producir ningún output....
 
-Tambien podemos corre `git log --oneline | wc -l` para obtener el conteo de commits en el repositorio:
+También podemos correr `git log --oneline | wc -l` para obtener el conteo de commits en el repositorio:
 
 ```bash
 git log --oneline | wc -l
@@ -54,7 +54,7 @@ git log --oneline | wc -l
 
 </details>
 
-Aqui podemos notar que el número de commits ha sido reducido de 8 a 7. Cualquier commit donde el archivo era el único objeto que se agregaba/modificaba ha sido eliminado del historial.
+Aquí podemos notar que el número de commits ha sido reducido de 8 a 7. Cualquier commit donde el archivo era el único objeto que se agregaba/modificaba ha sido eliminado del historial.
 
 Finalmente, veamos el output de `git-sizer` para ver si algo ha cambiado:
 
@@ -117,11 +117,12 @@ Processing references: 8
 [2]  9c7a571683a510ece67d243860054a9fc38d9e00 (refs/heads/main^{tree})
 [3]  67533d22028802e3d428e1f11304d76bcc7e07bc (refs/replace/d56d6b47466b132ec054eee397e8c02643e66f20:cmd/root.go)
 ```
+
 </details>
 
 Con este nuevo output, podemos ver que ya no tenemos commits que contengan el archivo `backup/data.bak`. También podemos ver que el blob mas grande se ha reducido de 50.0 MiB a 2.41KiB, además de que el tamaño total de los blobs ha disminuido de 50.0 MiB a 12.9 KiB.
 
-Despues de realizar una reescritura, `git filter-repo` tambien producira una lista de shas reescritos. Esto puede ser util para cualquier implementacion que haga referencia a commits por su sha.
+Después de realizar una reescritura, `git filter-repo` también producirá una lista de shas reescritos. Esto puede ser util para cualquier implementación que haga referencia a commits por su sha.
 
 Estos contenidos se encuentran en el archivo `.git/filter-repo/commit-map` en el directorio de trabajo del repositorio. El contenido de este archivo se ve algo como esto:
 
@@ -140,7 +141,7 @@ ee317685018714b2143ee1e91d4e563273c5bdb0 4c597d6660f80165e832a49de75e5c35f36c6a8
 En los casos donde se vean todos 0's, esto significa que el commit fue eliminado del historial.
 
 > [!CAUTION]
-> Es importante notar que ejecuciones subsecuentes de `git filter-repo` reescribiran la historia multiples veces, y por lo tanto los shas y estos archivos cambiaran nuevamente. Es importante combinar tus parametros en un solo comando para solo tener que ejecutar `git filter-repo` y reescribir la historia una vez.
+> Es importante notar que ejecuciones subsecuentes de `git filter-repo` reescribirán la historia multiples veces, y por lo tanto los shas y estos archivos cambiaran nuevamente. Es importante combinar tus parámetros en un solo comando para solo tener que ejecutar `git filter-repo` y reescribir la historia una vez.
 
 ## Conclusion
 

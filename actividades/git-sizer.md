@@ -1,6 +1,6 @@
 # Recopilando estadísticas con `git-sizer`
 
-Para la primera actividad, usaremos `git-sizer` para analizar el estado de tu monorepositorio. `git-sizer` es una herramienta que te ayudará a comprender el tamaño de su repositorio e identificar archivos y commits grandes.
+Para la primera actividad, usaremos `git-sizer` para analizar el estado de tu monorepositorio. `git-sizer` es una herramienta que te ayudará a comprender el tamaño de nuestro repositorio e identificar archivos y commits grandes.
 
 Antes de comenzar, echemos un vistazo al contenido de nuestro monorepositorio actual.
 
@@ -20,6 +20,7 @@ drwxr-xr-x    2 root     root        4.0K May 15 22:24 cmd
 -rw-r--r--    1 root     root         896 May 15 22:24 go.sum
 -rw-r--r--    1 root     root        1.1K May 15 22:24 main.go
 ```
+
 </details>
 
 ```bash
@@ -36,17 +37,18 @@ go.mod
 go.sum
 main.go
 ```
+
 </details>
 
-No pareciera que haya nada inusual aqui. Tenemos varios archivos de go y un README, todos de un tamaño razonable.
+No pareciera que haya nada inusual aquí. Tenemos varios archivos de go y un README, todos de un tamaño razonable.
 
-Por los momemntos, todo parece bien, pero veamos si `git-sizer` nos puede dar una mejor idea de la historia de nuestro repositorio. Ejecuta el siguiente comando en el directorio del monorepositorio:
+Por los momentos, todo parece bien, pero veamos si `git-sizer` nos puede dar una mejor idea de la historia de nuestro repositorio. Ejecuta el siguiente comando en el directorio del monorepositorio:
 
 ```bash
 git sizer --verbose
 ```
 
-Deberias de ver un output similar al siguiente:
+Deberíamos de ver un output similar al siguiente:
 
 <details><summary>Output</summary>
 
@@ -107,7 +109,7 @@ Processing references: 3
 
 </details>
 
-Que tipo de informacion podemos obtener de esta tabla?
+Que tipo de información podemos obtener de esta tabla?
 
 ```bash
 | Overall repository size      |           |                                |
@@ -144,7 +146,7 @@ El tamaño máximo de blob(Maximum Blob size) indica el archivo más grande que 
 | * Number of submodules       |     0     |                                |
 ```
 
-Los checkouts mas grandes (Biggest checkouts) nos dice en un solo checkout en cualquier punto de la historia del repositorio, cuales son los tamaños mas grandes o maximos de archivos, directorios, etc. En nuestro caso, un checkout de la rama main en HEAD no contiene 50.0MiB, pero en algun punto de la historia del repositorio, podemos ver que es mucho mas grande...
+Los checkouts mas grandes (Biggest checkouts) nos dice en un solo checkout en cualquier punto de la historia del repositorio, cuales son los tamaños mas grandes o máximos de archivos, directorios, etc. En nuestro caso, un checkout de la rama main en HEAD no contiene 50.0MiB, pero en algún punto de la historia del repositorio, podemos ver que es mucho mas grande...
 
 Al final de la tabla, `git-sizer` también muestra los SHAs de los objetos de git, los SHAs de los commits y las rutas de los objetos de git relevantes.
 
@@ -155,8 +157,8 @@ Al final de la tabla, `git-sizer` también muestra los SHAs de los objetos de gi
 [4]  9c7a571683a510ece67d243860054a9fc38d9e00 (refs/heads/main^{tree})
 ```
 
-Estos SHAs o rutas pueden ser utilizados para investigar objetos de git problemáticos en un repositorio. 
-Por ejemplo, `git cat-file` puede ser usado para ver el contenido del blob mas grande en el repositorio. 
+Estos SHAs o rutas pueden ser utilizados para investigar objetos de git problemáticos en un repositorio.
+Por ejemplo, `git cat-file` puede ser usado para ver el contenido del blob mas grande en el repositorio.
 En este caso, podemos ver el contenido del blob mas grande mandando el SHA del objeto.
 
 ```bash
@@ -205,12 +207,13 @@ go.mod
 go.sum
 main.go
 ```
+
 </details>
 
-Como se esperaba, podemos ver que en este punto de la historia, el repositorio contenia `backup/data.bak` el cual fue eliminado, pero permanece en la historia del repositorio.
+Como se esperaba, podemos ver que en este punto de la historia, el repositorio contenía `backup/data.bak` el cual fue eliminado, pero permanece en la historia del repositorio.
 
 ## Conclusion
 
-Git sizer es un metodo rapido y simple para obtener una idea general del tamaño y salud de un repositorio git. Puede ser usado para ayudar a identificar archivos grandes, directorios y commits en la historia de un repositorio.
+Git sizer es un método rápido y simple para obtener una idea general del tamaño y salud de un repositorio git. Puede ser usado para ayudar a identificar archivos grandes, directorios y commits en la historia de un repositorio.
 
 :arrow_backward: [Regresar al README](../README.md)

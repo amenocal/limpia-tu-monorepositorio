@@ -2,7 +2,7 @@
 
 Para la segunda actividad, usaremos `git filter-repo` para determinar y analizar blobs grandes en un repositorio.
 
-Aunque el propósito principal de `git filter-repo` es reescribir la historia de un repositorio, también se puede usar para recopilar información sobre blobs en tu repositorio. 
+Aunque el propósito principal de `git filter-repo` es reescribir la historia de un repositorio, también se puede usar para recopilar información sobre blobs en tu repositorio.
 
 Navega al directorio del monorepositorio y ejecuta el siguiente comando:
 
@@ -11,7 +11,7 @@ cd mal-monorepositorio
 git filter-repo --analyze
 ```
 
-`git filter-repo` comenzará a procesar todos los objetos en el repositorio. Una vez que haya terminado, navega a `.git/filter-repo/analysis`
+`git filter-repo` comenzará a procesar todos los objetos en el repositorio. Una vez que haya terminado, naveguemos a `.git/filter-repo/analysis`
 
 ```bash
 cd .git/filter-repo/analysis
@@ -45,7 +45,6 @@ Format: sha, unpacked size, packed size, filename(s) object stored as
 
 Vamos a explicar lo que vemos en este archivo:
 
-
 - `sha` se refiere al SHA del objeto git en sí. Podemos usar esto para hacer cosas como listar el contenido del blob con `git cat-file`, similar a lo que hicimos en el ejercicio de `git sizer`.
 - `unpacked size` se refiere al tamaño descomprimido del blob en bytes. Este es el tamaño del archivo tal como sería si se extrajera del repositorio de git. (es decir, al ejecutar `git checkout`)
 - `packed size` se refiere al tamaño comprimido del blob en bytes. Este es el tamaño del archivo tal como está almacenado en el repositorio de git.
@@ -53,9 +52,10 @@ Vamos a explicar lo que vemos en este archivo:
 
 Con esta información, ahora podemos determinar los blobs más grandes en la historia del repositorio e investigarlos más a fondo. Un ejemplo puede ser que queremos encontrar en qué commit en particular se introdujo un archivo grande. Podemos hacer esto ejecutando el siguiente comando:
 
-```bash 
+```bash
 git --no-pager log --follow  --diff-filter=A -- backup/data.bak
 ```
+
 <details><summary>Output</summary>
 
 ```bash
@@ -66,20 +66,22 @@ Date:   Tue May 14 17:35:38 2024 -0500
 
     usando fmt para imprimir mensaje
 ```
+
 </details>
 
 Con estos detalles, podemos ver que el archivo fue introducido por primera vez en el commit `73f627` junto con el autor y la fecha del commit. Podemos verificar y ver todos los archivos que se agregaron en este commit ejecutando el siguiente comando:
 
-
 ```bash
 git diff-tree --no-commit-id --name-only -r 73f627b6e277d2ab576ae4ebbcd4408a362c5437
 ```
+
 <details><summary>Output</summary>
 
 ```bash
 backup/data.bak
 cmd/root.go
 ```
+
 </details>
 
 En algunos casos notaras que el archivo se repite varias veces. Esto indica que los cambios en el archivo ha pasado por commits varias veces en la historia del repositorio. Para archivos grandes (en particular archivos binarios grandes y comprimidos), esto puede ser problemático ya que los binarios grandes no tienden a comprimirse ni a diferenciarse bien.
