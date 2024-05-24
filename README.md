@@ -30,11 +30,15 @@ Para poder seguir el taller localmente, necesitarás instalar lo siguiente:
   - Alternativamente, si tienes `go` instalado, puedes instalar git-sizer con el gestor de paquetes go:
     - `go get github.com/github/git-sizer`
 
-Alternativamente puedes usar un [devcontainer](https://code.visualstudio.com/docs/devcontainers/containers) para tener un entorno de desarrollo listo para usar con todas las herramientas necesarias.
+Recomendado: pueden usar el [devcontainer](.devcontainer) que se encuentra en esta en este repositorio para tener un entorno de desarrollo listo para usar con todas las herramientas necesarias. Se necesita la extension de [devcontainers](https://code.visualstudio.com/docs/devcontainers/containers) para VSCode.
+
+>[!NOTE]
+> Este tutorial asume que usaras el [devcontainer](.devcontainer/devcontainer.json) ya que este hace el clone y hace multiple copias de tu repositorio [automaticamente](.devcontainer/on-create-command.sh)
 
 ### Repositorio
 
 Si no tienes un clon de una copia local de un monorepositorio personal para experimentar, también puedes clonar el repositorio de ejemplo que se utilizara a lo largo de estos ejercicios.
+
 - Clonar [devopsdaysmedellin/monorepositorio](https://github.com/devopsdaysmedellin/monorepositorio)
 
 HTTPs:
@@ -58,9 +62,11 @@ cp -r monorepositorio monorepositorio-filter-repo
 ## :mag: Actividad 1: Analizar
 
 ### Recopilando estadisticas con `git-sizer`
+
 [Estadisticas con Git Sizer](./actividades/git-sizer.md)
 
 ### Recopilando estadisticas con `git filter-repo`
+
 [Estadisticas con Git Filter-repo](./actividades/git-filter-repo-estadisticas.md)
 
 ## :broom: Activity 2: Limpieza
@@ -69,7 +75,7 @@ cp -r monorepositorio monorepositorio-filter-repo
 
 [Reescribiendo la historia](./actividades/reescribiendo-historia.md)
 
-## :chains: Activity 3: Grafting 
+## :chains: Activity 3: Grafting
 
 ### Como hacer un graft de dos repositorios
 
