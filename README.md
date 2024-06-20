@@ -39,18 +39,18 @@ Recomendado: pueden usar el [devcontainer](.devcontainer) que se encuentra en es
 
 Si no tienes un clon de una copia local de un monorepositorio personal para experimentar, también puedes clonar el repositorio de ejemplo que se utilizara a lo largo de estos ejercicios.
 
-- Clonar [devopsdaysmedellin/monorepositorio](https://github.com/devopsdaysmedellin/monorepositorio)
+- Clonar [amenocal/monorepositorio](https://github.com/amenocal/monorepositorio)
 
 HTTPs:
 
 ```sh
-git clone https://github.com/devopsdaysmedellin/monorepositorio.git
+git clone https://github.com/amenocal/monorepositorio.git
 ```
 
 SSH:
 
 ```sh
-git clone git@github.com:devopsdaysmedellin/monorepositorio.git
+git clone git@github.com:amenocal/monorepositorio.git
 ```
 
 Luego lo recomendado es crear una copia adicional del repositorio mientras experimentamos con diferentes métodos de limpieza.

@@ -19,5 +19,5 @@ ENV PATH="/opt/venv/bin:$PATH"
 RUN pip3 install --no-cache --upgrade pip setuptools
 RUN pip3 install git-filter-repo
 WORKDIR /source
-RUN git clone https://github.com/devopsdaysmedellin/monorepositorio
+RUN git clone https://github.com/amenocal/monorepositorio
 COPY --from=git-sizer-build-env /go/bin/git-sizer /usr/bin/git-sizer

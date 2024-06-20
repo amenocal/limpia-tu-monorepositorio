@@ -54,7 +54,7 @@ Después vamos a agregar y hacer commit a todos los nuevos archivos a nuestro nu
 
 ```bash
 git add --all
-git commit -m "Primer commit de el monorepositorio. Puedes encontrar todo el historial de el repositorio aquí https://github.com/devopsdaysmedellin/monorepositorio"
+git commit -m "Primer commit de el monorepositorio. Puedes encontrar todo el historial de el repositorio aquí https://github.com/amenocal/monorepositorio"
 ```
 
 Una vez completado, ahora tenemos dos repositorios diferentes, uno con solo 1 commit y otro con la replica del monorepositorio con todo el historial.
@@ -168,10 +168,10 @@ git --no-pager log --oneline
 <details><summary>Output</summary>
 
 ```bash
-b6f65f59 (HEAD -> main, replaced, origin/main) Primer commit de el monorepositorio. Puedes encontrar todo el historial de el repositorio aqui https://github.com/devopsdaysmedellin/monorepositorio
+b6f65f59 (HEAD -> main, replaced, origin/main) Primer commit de el monorepositorio. Puedes encontrar todo el historial de el repositorio aqui https://github.com/amenocal/monorepositorio
 332addd (historial/main) removiendo backup
 73f627b usando fmt para imprimir mensaje
-ee31768 Merge pull request #1 from devopsdaysmedellin/amenocal/README
+ee31768 Merge pull request #1 from amenocal/amenocal/README
 b4cf337 agregar README
 4a86093 imprimir el mensaje
 4fa2962 mensaje
